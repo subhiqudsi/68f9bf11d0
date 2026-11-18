@@ -144,312 +144,197 @@ summary .cnt { font-variant-numeric: tabular-nums; font-size: .85rem; color: var
 .note strong { color: var(--fg); }
 a { color: var(--accent); }
 footer { color: var(--muted); font-size: .85rem; border-top: 1px solid var(--line); padding-top: 18px; }
+
+/* Rebuilt version: actor colours and data-derived tiers */
+:root { --god: #2f5d8a; --god-soft: #e1eaf4; --people: #9a6414; --people-soft: #f5ead6; --mixed: #8a8f8c; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --god: #84acd9; --god-soft: #1a2636; --people: #d9a24a; --people-soft: #2f2414; --mixed: #7b8581; } }
+:root[data-theme="dark"] { --god: #84acd9; --god-soft: #1a2636; --people: #d9a24a; --people-soft: #2f2414; --mixed: #7b8581; }
+.chip b { font-weight: 400; color: var(--muted); margin-inline-start: 2px; font-size: .85em; }
+.chip.end { border-color: var(--gold); color: var(--gold); }
+.chip.br { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+.chip.big { font-size: 1.15rem; font-weight: 700; }
+.chip.g { border-color: var(--god); color: var(--god); background: var(--god-soft); }
+.chip.h { border-color: var(--people); color: var(--people); background: var(--people-soft); }
+.tier { grid-template-columns: 9.5rem 1fr; }
+.tier-body { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.grp { font-size: .8rem; color: var(--muted); align-self: center; min-width: 2.6rem; }
+.lv3 { background: var(--gold-soft); border-color: var(--gold); } .lv3 .name { color: var(--gold); }
+.lv2 { background: var(--surface); border-color: var(--line); } .lv2 .name { color: var(--accent); }
+.lv1 { background: var(--surface); border-color: var(--line); } .lv1 .name { color: var(--fg); }
+.lv0 { background: var(--input-soft); } .lv0 .name { color: var(--input); }
+.track { display: flex; }
+.seg-g { background: var(--god); } .seg-m { background: var(--mixed); } .seg-h { background: var(--people); }
+.track > div { height: 100%; }
+.track > div + div { margin-inline-start: 2px; }
+.bmark { font-style: normal; color: var(--accent); font-size: .7rem; vertical-align: 2px; }
+.links { display: flex; flex-direction: column; gap: 12px; }
+.link { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; display: grid; grid-template-columns: 10rem 1fr; gap: 10px 18px; }
+.link .from small { display: block; color: var(--muted); font-size: .8rem; margin-top: 4px; }
+.link ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.link li { display: grid; grid-template-columns: 7.5rem 1fr; gap: 10px; align-items: baseline; }
+.refs { font-size: .92rem; }
+.r { color: var(--muted); font-size: .85rem; white-space: nowrap; }
+@media (max-width: 560px) { .link, .link li { grid-template-columns: 1fr; } }
+.steps { display: flex; flex-direction: column; gap: 6px; }
+.steps h4 { margin: 6px 0 0; font-size: .85rem; font-weight: 400; color: var(--muted); }
+.step { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+.step .q { font-size: 1.15rem; line-height: 1.8; }
+.cz { padding: 0 8px; border-radius: 6px; font-size: .92rem; }
+.cz.g { background: var(--god-soft); color: var(--god); }
+.cz.h { background: var(--people-soft); color: var(--people); }
+.cz.isb { outline: 1.5px solid var(--accent); outline-offset: -1.5px; }
+.cs { display: flex; flex-wrap: wrap; gap: 5px; align-items: baseline; }
+.q.sm { font-size: 1.05rem; line-height: 1.6; color: var(--fg); }
+.vn { font-size: .8rem; color: var(--muted); }
+.vlist li { grid-template-columns: 7rem 1fr; }
+.goals { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 14px; }
+.goal { background: var(--surface); border: 1px solid var(--gold); border-radius: 10px; padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; }
+.goal h3 { color: var(--gold); font-size: 1.3rem; }
+.goal .mini { display: flex; height: 10px; border-radius: 3px; overflow: hidden; gap: 2px; }
+.goal .mini > div { height: 100%; }
+.goal .facts { font-size: .92rem; color: var(--muted); }
+.changed { background: var(--surface); border: 1px dashed var(--line); border-radius: 10px; padding: 16px 20px; display: flex; flex-direction: column; gap: 8px; }
+.changed ul { margin: 0; padding-inline-start: 1.2rem; display: flex; flex-direction: column; gap: 4px; }
 </style>
-</head>
-<body>
+
 <div class="wrap" dir="rtl" lang="ar">
 
 <header>
   <div class="word" aria-hidden="true">لَعَلَّ</div>
   <h1>مقاصد «لعلّ» في القرآن: ما الذي يؤدي إلى ماذا؟</h1>
-  <p class="lede">جمعت هذه الصفحة كل مواضع «لعلّ» في القرآن، وصنّفت المقصد الذي يأتي بعدها والسبب الذي يسبقها، ثم رتّبت المقاصد درجاتٍ يقود بعضها إلى بعض حتى الغاية العليا.</p>
+  <p class="lede">جمعت هذه الصفحة كل مواضع «لعلّ» في القرآن، وأخذت من كل آية المقصد الذي بعدها والأسباب المذكورة قبلها بلفظها. ثم بُني السلّم من النص وحده: يرتفع المقصد درجةً كلما أمر الله العباد بمقصدٍ آخر سببًا له.</p>
   <div class="stats">
     <span>مجموع المواضع <b>١٢٩</b></span>
     <span>مقاصد إلهية <b>١٠٣</b></span>
     <span>أقوال بشر أو ترجٍّ عام <b>٢٦</b></span>
-    <span>أنواع المقاصد <b>١٧</b></span>
+    <span>أنواع المقاصد <b>١٩</b></span>
+    <span>جسور <b>٤</b></span>
   </div>
 </header>
 
 <section aria-labelledby="ladder-h">
   <h2 id="ladder-h">سُلّم المقاصد</h2>
-  <p class="lede">كل درجة وسيلةٌ إلى ما فوقها. الأسفل ما يعطيه الله من آيات ونعم وابتلاءات، والأعلى غاياتٌ لا تأتي في هذه الآيات وسيلةً إلى شيء بعدها.</p>
+  <p class="lede">الدرجة هنا ليست اجتهادًا، بل هي عدد الحلقات في أطول سلسلة تذكرها الآيات. <b style="color:var(--accent)">الجسر</b> مقصدٌ يأتي بعد «لعلّ» في آية، ثم يأمر الله به العباد في آية أخرى فيأتي بعده مقصدٌ آخر.</p>
   <div class="ladder">
-    <div class="tier t-goal">
-      <div class="name">الغايات العليا<small>لا يأتي بعدها شيء</small></div>
-      <div class="chips"><span class="chip">الفلاح</span><span class="chip">الرحمة</span><span class="chip" style="font-size:.95rem;font-weight:500">الرضا (للنبي ﷺ)</span></div>
-    </div>
-    <div class="up" aria-hidden="true">▲</div>
-    <div class="tier t-hub">
-      <div class="name">المحور<small>غايةٌ للعبادة ووسيلةٌ للفلاح</small></div>
-      <div class="chips"><span class="chip main">التقوى</span><span class="chip">ذكر الله كثيرًا</span><span class="chip">التوبة</span><span class="chip">الطاعة والاتباع</span><span class="chip">الصبر والثبات</span></div>
-    </div>
-    <div class="up" aria-hidden="true">▲</div>
-    <div class="tier t-heart">
-      <div class="name">تحوّل القلب<small>استجابة وتوجّه</small></div>
-      <div class="chips"><span class="chip">الشكر</span><span class="chip">الهداية والرشد</span><span class="chip">الرجوع</span><span class="chip">التضرّع</span><span class="chip">التزكّي</span><span class="chip">الإسلام</span><span class="chip">الحذر</span><span class="chip">الانتهاء</span></div>
-    </div>
-    <div class="up" aria-hidden="true">▲</div>
-    <div class="tier t-mind">
-      <div class="name">الإدراك<small>فهمٌ وتأمّل</small></div>
-      <div class="chips"><span class="chip">التذكّر</span><span class="chip">التعقّل</span><span class="chip">التفكّر</span><span class="chip">الفقه</span><span class="chip">اليقين بلقاء الله</span></div>
-    </div>
-    <div class="up" aria-hidden="true">▲</div>
-    <div class="tier t-input">
-      <div class="name">ما يعطيه الله<small>المدخلات</small></div>
-      <div class="chips"><span class="chip">الكتاب والأمثال</span><span class="chip">آيات الكون</span><span class="chip">النعم</span><span class="chip">الابتلاء والعذاب الأدنى</span><span class="chip">الشرائع والعبادات</span><span class="chip">الإنذار</span></div>
-    </div>
+<div class="tier lv3"><div class="name">الغايات العليا<small>يصل إليها النص عبر حلقتين</small></div><div class="tier-body"><div class="chips"><span class="chip end big">الشكر <b>١٥</b></span><span class="chip end big">الفلاح <b>١١</b></span><span class="chip end big">الرحمة <b>٨</b></span></div></div></div>
+<div class="up" aria-hidden="true">▲</div>
+<div class="tier lv2"><div class="name">الدرجة الثانية<small>يصل إليها النص عبر حلقة واحدة</small></div><div class="tier-body"><div class="chips"><span class="grp">جسور</span><span class="chip br">التقوى <b>١٢</b></span></div><div class="chips"><span class="grp">نتائج</span><span class="chip end">الاهتداء <b>٩</b></span><span class="chip end">الرشد <b>١</b></span><span class="chip end">الحذر <b>١</b></span></div></div></div>
+<div class="up" aria-hidden="true">▲</div>
+<div class="tier lv1"><div class="name">الدرجة الأولى<small>تأتي بعد الأسباب مباشرة</small></div><div class="tier-body"><div class="chips"><span class="grp">جسور</span><span class="chip br">التذكّر <b>١٧</b></span><span class="chip br">الإيمان <b>١</b></span><span class="chip br">الفقه <b>١</b></span></div><div class="chips"><span class="grp">نتائج</span><span class="chip end">التعقّل <b>٨</b></span><span class="chip end">الرجوع <b>٧</b></span><span class="chip end">التفكّر <b>٥</b></span><span class="chip end">التضرّع <b>٢</b></span><span class="chip end">اليقين <b>١</b></span><span class="chip end">الإسلام <b>١</b></span><span class="chip end">الانتهاء <b>١</b></span><span class="chip end">الرضا <b>١</b></span><span class="chip end">التزكّي <b>١</b></span></div></div></div>
+<div class="up" aria-hidden="true">▲</div>
+<div class="tier lv0"><div class="name">الأسباب<small>ما يُذكر قبل «لعلّ»</small></div><div class="tier-body"><div class="chips"><span class="chip g">من الله: فعلٌ أو عطاء أو بيان <b>١٢٩</b></span><span class="chip h">من العباد: أمرٌ أو عمل <b>١٠٢</b></span></div></div></div>
   </div>
+  <p class="lede" style="font-size:.92rem">مقاصد الدرجة الأولى غير الجسور (التعقّل، الرجوع، التفكّر، التضرّع، اليقين، الإسلام، الانتهاء، الرضا، التزكّي) لم يأمر بها النص سببًا لغيرها، ولا يُرتّبها النص بعضها فوق بعض.</p>
 </section>
 
 <section aria-labelledby="freq-h">
-  <h2 id="freq-h">كم مرة جاء كل مقصد؟</h2>
+  <h2 id="freq-h">كم مرة جاء كل مقصد، وممّن سببه؟</h2>
   <div class="bars" role="list">
-    <div class="bar" role="listitem"><span class="lbl">التذكّر</span><div class="track"><div class="fill c-mind" style="width:100%"></div></div><span class="n">١٧</span></div>
-    <div class="bar" role="listitem"><span class="lbl">الشكر</span><div class="track"><div class="fill c-heart" style="width:88.2%"></div></div><span class="n">١٥</span></div>
-    <div class="bar" role="listitem"><span class="lbl">التقوى</span><div class="track"><div class="fill c-hub" style="width:70.6%"></div></div><span class="n">١٢</span></div>
-    <div class="bar" role="listitem"><span class="lbl">الفلاح</span><div class="track"><div class="fill c-goal" style="width:64.7%"></div></div><span class="n">١١</span></div>
-    <div class="bar" role="listitem"><span class="lbl">الهداية والرشد</span><div class="track"><div class="fill c-heart" style="width:58.8%"></div></div><span class="n">١٠</span></div>
-    <div class="bar" role="listitem"><span class="lbl">التعقّل</span><div class="track"><div class="fill c-mind" style="width:47.1%"></div></div><span class="n">٨</span></div>
-    <div class="bar" role="listitem"><span class="lbl">الرحمة</span><div class="track"><div class="fill c-goal" style="width:47.1%"></div></div><span class="n">٨</span></div>
-    <div class="bar" role="listitem"><span class="lbl">الرجوع</span><div class="track"><div class="fill c-heart" style="width:41.2%"></div></div><span class="n">٧</span></div>
-    <div class="bar" role="listitem"><span class="lbl">التفكّر</span><div class="track"><div class="fill c-mind" style="width:29.4%"></div></div><span class="n">٥</span></div>
-    <div class="bar" role="listitem"><span class="lbl">التضرّع</span><div class="track"><div class="fill c-heart" style="width:11.8%"></div></div><span class="n">٢</span></div>
-    <div class="bar" role="listitem"><span class="lbl">اليقين بلقاء الله</span><div class="track"><div class="fill c-mind" style="width:11.8%"></div></div><span class="n">٢</span></div>
-    <div class="bar" role="listitem"><span class="lbl">ستة مقاصد أخرى</span><div class="track"><div class="fill c-heart" style="width:5.9%"></div></div><span class="n">١ لكلٍّ</span></div>
+<div class="bar" role="listitem"><span class="lbl">التذكّر <i class="bmark" title="جسر">◆</i></span><div class="track" title="من الله وحده ١١، من الطرفين ٣، من العباد وحدهم ٣" aria-label="من الله وحده ١١، من الطرفين ٣، من العباد وحدهم ٣"><div class="seg-g" style="width:64.7%"></div><div class="seg-m" style="width:17.6%"></div><div class="seg-h" style="width:17.6%"></div></div><span class="n">١٧</span></div>
+<div class="bar" role="listitem"><span class="lbl">الشكر</span><div class="track" title="من الله وحده ٤، من الطرفين ١١، من العباد وحدهم ٠" aria-label="من الله وحده ٤، من الطرفين ١١، من العباد وحدهم ٠"><div class="seg-g" style="width:23.5%"></div><div class="seg-m" style="width:64.7%"></div></div><span class="n">١٥</span></div>
+<div class="bar" role="listitem"><span class="lbl">التقوى <i class="bmark" title="جسر">◆</i></span><div class="track" title="من الله وحده ٥، من الطرفين ٤، من العباد وحدهم ٣" aria-label="من الله وحده ٥، من الطرفين ٤، من العباد وحدهم ٣"><div class="seg-g" style="width:29.4%"></div><div class="seg-m" style="width:23.5%"></div><div class="seg-h" style="width:17.6%"></div></div><span class="n">١٢</span></div>
+<div class="bar" role="listitem"><span class="lbl">الفلاح</span><div class="track" title="من الله وحده ٠، من الطرفين ١، من العباد وحدهم ١٠" aria-label="من الله وحده ٠، من الطرفين ١، من العباد وحدهم ١٠"><div class="seg-m" style="width:5.9%"></div><div class="seg-h" style="width:58.8%"></div></div><span class="n">١١</span></div>
+<div class="bar" role="listitem"><span class="lbl">الاهتداء</span><div class="track" title="من الله وحده ٥، من الطرفين ٣، من العباد وحدهم ١" aria-label="من الله وحده ٥، من الطرفين ٣، من العباد وحدهم ١"><div class="seg-g" style="width:29.4%"></div><div class="seg-m" style="width:17.6%"></div><div class="seg-h" style="width:5.9%"></div></div><span class="n">٩</span></div>
+<div class="bar" role="listitem"><span class="lbl">التعقّل</span><div class="track" title="من الله وحده ٥، من الطرفين ٣، من العباد وحدهم ٠" aria-label="من الله وحده ٥، من الطرفين ٣، من العباد وحدهم ٠"><div class="seg-g" style="width:29.4%"></div><div class="seg-m" style="width:17.6%"></div></div><span class="n">٨</span></div>
+<div class="bar" role="listitem"><span class="lbl">الرحمة</span><div class="track" title="من الله وحده ٠، من الطرفين ٢، من العباد وحدهم ٦" aria-label="من الله وحده ٠، من الطرفين ٢، من العباد وحدهم ٦"><div class="seg-m" style="width:11.8%"></div><div class="seg-h" style="width:35.3%"></div></div><span class="n">٨</span></div>
+<div class="bar" role="listitem"><span class="lbl">الرجوع</span><div class="track" title="من الله وحده ٥، من الطرفين ١، من العباد وحدهم ١" aria-label="من الله وحده ٥، من الطرفين ١، من العباد وحدهم ١"><div class="seg-g" style="width:29.4%"></div><div class="seg-m" style="width:5.9%"></div><div class="seg-h" style="width:5.9%"></div></div><span class="n">٧</span></div>
+<div class="bar" role="listitem"><span class="lbl">التفكّر</span><div class="track" title="من الله وحده ٣، من الطرفين ٢، من العباد وحدهم ٠" aria-label="من الله وحده ٣، من الطرفين ٢، من العباد وحدهم ٠"><div class="seg-g" style="width:17.6%"></div><div class="seg-m" style="width:11.8%"></div></div><span class="n">٥</span></div>
+<div class="bar" role="listitem"><span class="lbl">التضرّع</span><div class="track" title="من الله وحده ٢، من الطرفين ٠، من العباد وحدهم ٠" aria-label="من الله وحده ٢، من الطرفين ٠، من العباد وحدهم ٠"><div class="seg-g" style="width:11.8%"></div></div><span class="n">٢</span></div>
+<div class="bar" role="listitem"><span class="lbl">الرشد</span><div class="track" title="من الله وحده ٠، من الطرفين ١، من العباد وحدهم ٠" aria-label="من الله وحده ٠، من الطرفين ١، من العباد وحدهم ٠"><div class="seg-m" style="width:5.9%"></div></div><span class="n">١</span></div>
+<div class="bar" role="listitem"><span class="lbl">الإيمان <i class="bmark" title="جسر">◆</i></span><div class="track" title="من الله وحده ١، من الطرفين ٠، من العباد وحدهم ٠" aria-label="من الله وحده ١، من الطرفين ٠، من العباد وحدهم ٠"><div class="seg-g" style="width:5.9%"></div></div><span class="n">١</span></div>
+<div class="bar" role="listitem"><span class="lbl">اليقين</span><div class="track" title="من الله وحده ١، من الطرفين ٠، من العباد وحدهم ٠" aria-label="من الله وحده ١، من الطرفين ٠، من العباد وحدهم ٠"><div class="seg-g" style="width:5.9%"></div></div><span class="n">١</span></div>
+<div class="bar" role="listitem"><span class="lbl">الإسلام</span><div class="track" title="من الله وحده ١، من الطرفين ٠، من العباد وحدهم ٠" aria-label="من الله وحده ١، من الطرفين ٠، من العباد وحدهم ٠"><div class="seg-g" style="width:5.9%"></div></div><span class="n">١</span></div>
+<div class="bar" role="listitem"><span class="lbl">الفقه <i class="bmark" title="جسر">◆</i></span><div class="track" title="من الله وحده ١، من الطرفين ٠، من العباد وحدهم ٠" aria-label="من الله وحده ١، من الطرفين ٠، من العباد وحدهم ٠"><div class="seg-g" style="width:5.9%"></div></div><span class="n">١</span></div>
+<div class="bar" role="listitem"><span class="lbl">الحذر</span><div class="track" title="من الله وحده ٠، من الطرفين ٠، من العباد وحدهم ١" aria-label="من الله وحده ٠، من الطرفين ٠، من العباد وحدهم ١"><div class="seg-h" style="width:5.9%"></div></div><span class="n">١</span></div>
+<div class="bar" role="listitem"><span class="lbl">الانتهاء</span><div class="track" title="من الله وحده ٠، من الطرفين ٠، من العباد وحدهم ١" aria-label="من الله وحده ٠، من الطرفين ٠، من العباد وحدهم ١"><div class="seg-h" style="width:5.9%"></div></div><span class="n">١</span></div>
+<div class="bar" role="listitem"><span class="lbl">الرضا</span><div class="track" title="من الله وحده ٠، من الطرفين ٠، من العباد وحدهم ١" aria-label="من الله وحده ٠، من الطرفين ٠، من العباد وحدهم ١"><div class="seg-h" style="width:5.9%"></div></div><span class="n">١</span></div>
+<div class="bar" role="listitem"><span class="lbl">التزكّي</span><div class="track" title="من الله وحده ٠، من الطرفين ٠، من العباد وحدهم ١" aria-label="من الله وحده ٠، من الطرفين ٠، من العباد وحدهم ١"><div class="seg-h" style="width:5.9%"></div></div><span class="n">١</span></div>
   </div>
   <div class="legend">
-    <span style="--k:var(--gold)">غاية عليا</span>
-    <span style="--k:var(--accent)">المحور</span>
-    <span style="--k:var(--heart)">تحوّل القلب</span>
-    <span style="--k:var(--mind)">الإدراك</span>
+    <span style="--k:var(--god)">أسباب من الله وحده</span>
+    <span style="--k:var(--mixed)">من الله والعباد معًا</span>
+    <span style="--k:var(--people)">من العباد وحدهم</span>
+    <span style="--k:transparent"><i class="bmark">◆</i> جسر</span>
   </div>
-  <p class="lede" style="font-size:.9rem">المقاصد الستة الأخرى: الإسلام، الفقه، الحذر، الانتهاء، الرضا، التزكّي.</p>
 </section>
 
-<section aria-labelledby="map-h">
-  <h2 id="map-h">كل مُدخَل يقود إلى مقصد بعينه</h2>
-  <div class="map">
-    <div class="row"><div class="from">النِّعَم<small>العفو، البحر، الرياح، الليل والنهار، السمع والبصر، النصر</small></div><div class="arr">←</div><div class="chips"><span class="chip">الشكر</span><span class="chip">الإسلام</span></div></div>
-    <div class="row"><div class="from">الابتلاء والعذاب الأدنى<small>البأساء والضراء، ظهور الفساد، السنين ونقص الثمرات</small></div><div class="arr">←</div><div class="chips"><span class="chip">الرجوع</span><span class="chip">التضرّع</span><span class="chip">التذكّر</span></div></div>
-    <div class="row"><div class="from">الكتاب والأمثال والقصص<small>القرآن العربي، كتاب موسى، ضرب الأمثال</small></div><div class="arr">←</div><div class="chips"><span class="chip">التعقّل</span><span class="chip">التفكّر</span><span class="chip">التذكّر</span><span class="chip">الهداية</span></div></div>
-    <div class="row"><div class="from">العبادات والشرائع<small>العبادة، الصيام، القصاص، حدود الله</small></div><div class="arr">←</div><div class="chips"><span class="chip">التقوى</span></div></div>
-    <div class="row"><div class="from">التقوى والذكر والطاعة<small>الصبر، الجهاد، التوبة، اجتناب الخمر والربا</small></div><div class="arr">←</div><div class="chips"><span class="chip" style="border-color:var(--gold);color:var(--gold)">الفلاح</span><span class="chip" style="border-color:var(--gold);color:var(--gold)">الرحمة</span></div></div>
+<section aria-labelledby="links-h">
+  <h2 id="links-h">الجسور: إلى أين يقود كل منها</h2>
+  <p class="lede">كل سطر آيةٌ يأمر الله فيها العباد بمقصدٍ جاء في موضع آخر بعد «لعلّ». بين القوسين لفظ الأمر في الآية.</p>
+  <div class="links">
+<div class="link"><div class="from"><span class="chip br">التذكّر <b>١٧</b></span><small>حين يُؤمر به العباد يأتي بعده</small></div><ul><li><span class="to"><span class="chip br">التقوى <b>١٢</b></span></span><span class="refs">«اذكروا ما فيه» <span class="r">البقرة ٦٣</span>، «ذكرى» <span class="r">الأنعام ٦٩</span>، «اذكروا ما فيه» <span class="r">الأعراف ١٧١</span></span></li><li><span class="to"><span class="chip end">الفلاح <b>١١</b></span></span><span class="refs">«اذكروا آلاء الله» <span class="r">الأعراف ٦٩</span>، «اذكروا الله كثيرًا» <span class="r">الأنفال ٤٥</span>، «اذكروا الله كثيرًا» <span class="r">الجمعة ١٠</span></span></li><li><span class="to"><span class="chip end">الشكر <b>١٥</b></span></span><span class="refs">«اذكروا إذ أنتم قليل» <span class="r">الأنفال ٢٦</span>، «اذكروا اسم الله عليها» <span class="r">الحج ٣٦</span></span></li><li><span class="to"><span class="chip end">الاهتداء <b>٩</b></span></span><span class="refs">«اذكروا نعمة الله عليكم» <span class="r">آل عمران ١٠٣</span></span></li></ul></div>
+<div class="link"><div class="from"><span class="chip br">التقوى <b>١٢</b></span><small>حين يُؤمر به العباد يأتي بعده</small></div><ul><li><span class="to"><span class="chip end">الفلاح <b>١١</b></span></span><span class="refs">«اتقوا الله» <span class="r">البقرة ١٨٩</span>، «اتقوا الله» <span class="r">آل عمران ١٣٠</span>، «اتقوا الله» <span class="r">آل عمران ٢٠٠</span>، «اتقوا الله» <span class="r">المائدة ٣٥</span>، «اتقوا الله يا أولي الألباب» <span class="r">المائدة ١٠٠</span></span></li><li><span class="to"><span class="chip end">الرحمة <b>٨</b></span></span><span class="refs">«اتقوا» <span class="r">الأنعام ١٥٥</span>، «لتتقوا» <span class="r">الأعراف ٦٣</span>، «اتقوا ما بين أيديكم وما خلفكم» <span class="r">يس ٤٥</span>، «اتقوا الله» <span class="r">الحجرات ١٠</span></span></li><li><span class="to"><span class="chip end">الشكر <b>١٥</b></span></span><span class="refs">«اتقوا الله» <span class="r">آل عمران ١٢٣</span></span></li></ul></div>
+<div class="link"><div class="from"><span class="chip br">الإيمان <b>١</b></span><small>حين يُؤمر به العباد يأتي بعده</small></div><ul><li><span class="to"><span class="chip end">الاهتداء <b>٩</b></span></span><span class="refs">«آمنوا بالله ورسوله» <span class="r">الأعراف ١٥٨</span></span></li><li><span class="to"><span class="chip end">الرشد <b>١</b></span></span><span class="refs">«وليؤمنوا بي» <span class="r">البقرة ١٨٦</span></span></li></ul></div>
+<div class="link"><div class="from"><span class="chip br">الفقه <b>١</b></span><small>حين يُؤمر به العباد يأتي بعده</small></div><ul><li><span class="to"><span class="chip end">الحذر <b>١</b></span></span><span class="refs">«ليتفقّهوا في الدين» <span class="r">التوبة ١٢٢</span></span></li></ul></div>
   </div>
 </section>
 
 <section aria-labelledby="chain-h">
-  <h2 id="chain-h">آيات تذكر السلسلة كاملة</h2>
-  <p class="lede">في هذه الآيات تأتي أكثر من حلقة في موضع واحد، فيظهر الترتيب صريحًا.</p>
+  <h2 id="chain-h">أطول السلاسل في النص</h2>
+  <p class="lede">لا تذكر آيةٌ واحدة السلسلة كلها. تتصل حلقاتها من آيات مختلفة: آياتٌ فيها «اذكروا… لعلكم تتقون»، وآياتٌ فيها «اتقوا… لعلكم تفلحون». وهذه هي السلاسل الوحيدة ذات الحلقتين.</p>
   <div class="chains">
-    <div class="chain">
-      <p class="q">لِيُنذِرَكُمۡ وَلِتَتَّقُواْ وَلَعَلَّكُمۡ تُرۡحَمُونَ</p>
-      <div class="flow"><span class="chip">الإنذار</span><span class="arrow">←</span><span class="chip">التقوى</span><span class="arrow">←</span><span class="chip" style="border-color:var(--gold);color:var(--gold)">الرحمة</span></div>
-      <span class="ref">الأعراف ٦٣</span>
-    </div>
-    <div class="chain">
-      <p class="q">ٱصۡبِرُواْ وَصَابِرُواْ وَرَابِطُواْ وَٱتَّقُواْ ٱللَّهَ لَعَلَّكُمۡ تُفۡلِحُونَ</p>
-      <div class="flow"><span class="chip">الصبر والمرابطة</span><span class="arrow">←</span><span class="chip">التقوى</span><span class="arrow">←</span><span class="chip" style="border-color:var(--gold);color:var(--gold)">الفلاح</span></div>
-      <span class="ref">آل عمران ٢٠٠</span>
-    </div>
-    <div class="chain">
-      <p class="q">وَلَقَدۡ نَصَرَكُمُ ٱللَّهُ بِبَدۡرࣲ وَأَنتُمۡ أَذِلَّةࣱۖ فَٱتَّقُواْ ٱللَّهَ لَعَلَّكُمۡ تَشۡكُرُونَ</p>
-      <div class="flow"><span class="chip">النعمة (النصر)</span><span class="arrow">←</span><span class="chip">التقوى</span><span class="arrow">←</span><span class="chip">الشكر</span></div>
-      <span class="ref">آل عمران ١٢٣</span>
-    </div>
-    <div class="chain">
-      <p class="q">فَقُولَا لَهُۥ قَوۡلࣰا لَّيِّنࣰا لَّعَلَّهُۥ يَتَذَكَّرُ أَوۡ يَخۡشَىٰ</p>
-      <div class="flow"><span class="chip">القول الليّن</span><span class="arrow">←</span><span class="chip">التذكّر</span><span class="arrow">←</span><span class="chip">الخشية</span></div>
-      <span class="ref">طه ٤٤</span>
-    </div>
-    <div class="chain">
-      <p class="q">لِتَسۡكُنُواْ فِيهِ وَلِتَبۡتَغُواْ مِن فَضۡلِهِۦ وَلَعَلَّكُمۡ تَشۡكُرُونَ</p>
-      <div class="flow"><span class="chip">«لِـ» منفعة دنيوية</span><span class="arrow">←</span><span class="chip">«لعلّ» الشكر</span></div>
-      <span class="ref">القصص ٧٣، وبالنمط نفسه المائدة ٦ والبقرة ١٨٥ والنحل ١٤</span>
-    </div>
-    <div class="chain">
-      <p class="q">يَٰٓأَيُّهَا ٱلنَّاسُ ٱعۡبُدُواْ رَبَّكُمُ… لَعَلَّكُمۡ تَتَّقُونَ</p>
-      <div class="flow"><span class="chip">العبادة</span><span class="arrow">←</span><span class="chip">التقوى</span></div>
-      <span class="ref">البقرة ٢١، أول أمرٍ في ترتيب المصحف</span>
-    </div>
+<div class="chain"><div class="flow"><span class="chip br">التذكّر</span><span class="arrow">←</span><span class="chip br">التقوى</span><span class="arrow">←</span><span class="chip end big">الشكر <b>١٥</b></span></div>
+    <div class="steps"><h4>الحلقة الأولى: الذكر ثم التقوى</h4><div class="step"><span class="cz h">«اذكروا ما فيه»</span><span class="q">تَتَّقُونَ</span><span class="r">البقرة ٦٣</span></div><div class="step"><span class="cz h">«ذكرى»</span><span class="q">يَتَّقُونَ</span><span class="r">الأنعام ٦٩</span></div><div class="step"><span class="cz h">«اذكروا ما فيه»</span><span class="q">تَتَّقُونَ</span><span class="r">الأعراف ١٧١</span></div>
+    <h4>الحلقة الثانية: التقوى ثم الشكر</h4><div class="step"><span class="cz h">«اتقوا الله»</span><span class="q">تَشۡكُرُونَ</span><span class="r">آل عمران ١٢٣</span></div>
+    <h4>ويأتي الشكر بعد الذكر مباشرة أيضًا</h4><div class="step"><span class="cz h">«اذكروا إذ أنتم قليل»</span><span class="q">تَشۡكُرُونَ</span><span class="r">الأنفال ٢٦</span></div><div class="step"><span class="cz h">«اذكروا اسم الله عليها»</span><span class="q">تَشۡكُرُونَ</span><span class="r">الحج ٣٦</span></div></div></div>
+<div class="chain"><div class="flow"><span class="chip br">التذكّر</span><span class="arrow">←</span><span class="chip br">التقوى</span><span class="arrow">←</span><span class="chip end big">الفلاح <b>١١</b></span></div>
+    <div class="steps"><h4>الحلقة الأولى: الذكر ثم التقوى</h4><div class="step"><span class="cz h">«اذكروا ما فيه»</span><span class="q">تَتَّقُونَ</span><span class="r">البقرة ٦٣</span></div><div class="step"><span class="cz h">«ذكرى»</span><span class="q">يَتَّقُونَ</span><span class="r">الأنعام ٦٩</span></div><div class="step"><span class="cz h">«اذكروا ما فيه»</span><span class="q">تَتَّقُونَ</span><span class="r">الأعراف ١٧١</span></div>
+    <h4>الحلقة الثانية: التقوى ثم الفلاح</h4><div class="step"><span class="cz h">«اتقوا الله»</span><span class="q">تُفۡلِحُونَ</span><span class="r">البقرة ١٨٩</span></div><div class="step"><span class="cz h">«اتقوا الله»</span><span class="q">تُفۡلِحُونَ</span><span class="r">آل عمران ١٣٠</span></div><div class="step"><span class="cz h">«اتقوا الله»</span><span class="q">تُفۡلِحُونَ</span><span class="r">آل عمران ٢٠٠</span></div><div class="step"><span class="cz h">«اتقوا الله»</span><span class="q">تُفۡلِحُونَ</span><span class="r">المائدة ٣٥</span></div><div class="step"><span class="cz h">«اتقوا الله يا أولي الألباب»</span><span class="q">تُفۡلِحُونَ</span><span class="r">المائدة ١٠٠</span></div>
+    <h4>ويأتي الفلاح بعد الذكر مباشرة أيضًا</h4><div class="step"><span class="cz h">«اذكروا آلاء الله»</span><span class="q">تُفۡلِحُونَ</span><span class="r">الأعراف ٦٩</span></div><div class="step"><span class="cz h">«اذكروا الله كثيرًا»</span><span class="q">تُفۡلِحُونَ</span><span class="r">الأنفال ٤٥</span></div><div class="step"><span class="cz h">«اذكروا الله كثيرًا»</span><span class="q">تُفۡلِحُونَ</span><span class="r">الجمعة ١٠</span></div></div></div>
+<div class="chain"><div class="flow"><span class="chip br">التذكّر</span><span class="arrow">←</span><span class="chip br">التقوى</span><span class="arrow">←</span><span class="chip end big">الرحمة <b>٨</b></span></div>
+    <div class="steps"><h4>الحلقة الأولى: الذكر ثم التقوى</h4><div class="step"><span class="cz h">«اذكروا ما فيه»</span><span class="q">تَتَّقُونَ</span><span class="r">البقرة ٦٣</span></div><div class="step"><span class="cz h">«ذكرى»</span><span class="q">يَتَّقُونَ</span><span class="r">الأنعام ٦٩</span></div><div class="step"><span class="cz h">«اذكروا ما فيه»</span><span class="q">تَتَّقُونَ</span><span class="r">الأعراف ١٧١</span></div>
+    <h4>الحلقة الثانية: التقوى ثم الرحمة</h4><div class="step"><span class="cz h">«اتقوا»</span><span class="q">تُرۡحَمُونَ</span><span class="r">الأنعام ١٥٥</span></div><div class="step"><span class="cz h">«لتتقوا»</span><span class="q">تُرۡحَمُونَ</span><span class="r">الأعراف ٦٣</span></div><div class="step"><span class="cz h">«اتقوا ما بين أيديكم وما خلفكم»</span><span class="q">تُرۡحَمُونَ</span><span class="r">يس ٤٥</span></div><div class="step"><span class="cz h">«اتقوا الله»</span><span class="q">تُرۡحَمُونَ</span><span class="r">الحجرات ١٠</span></div>
+    </div></div>
   </div>
 </section>
 
 <section aria-labelledby="top-h">
   <h2 id="top-h">الغايات العليا وما يوصل إليها</h2>
-  <p class="lede">الغايات العليا هي نفسها أعلى درجة في السلّم: الفلاح والرحمة، والرضا في خطاب النبي ﷺ. التقوى والشكر بعدها ليسا من الغايات العليا، لكنهما أهمّ ما يوصل إليها.</p>
-  <div class="ladder" style="gap:12px">
-    <div class="tier t-goal" style="grid-template-columns:1fr">
-      <h3 style="color:var(--gold)">الغايات العليا: الفلاح والرحمة والرضا</h3>
-      <p>هي نهاية السلسلة، ولا تأتي في هذه الآيات وسيلةً إلى شيء آخر. إلى الفلاح والرحمة تنتهي التقوى والذكر والتوبة والطاعة، والرضا جاء للنبي ﷺ ثمرةً للصبر والتسبيح (طه ١٣٠).</p>
-    </div>
-    <div class="tier t-hub" style="grid-template-columns:1fr">
-      <h3 style="color:var(--accent)">المحور الموصل إليها: التقوى</h3>
-      <p>هي الحلقة الواصلة بين النصفين: غايةُ العبادة والصيام والقصاص والقرآن نفسه، وهي في الوقت ذاته أكثر الطرق المؤدية إلى الفلاح والرحمة.</p>
-    </div>
-    <div class="tier t-heart" style="grid-template-columns:1fr">
-      <h3 style="color:var(--heart)">أكثر الاستجابات ورودًا: الشكر</h3>
-      <p>الجواب المنتظر لكل نعمة، وهو من درجة «تحوّل القلب»، وثاني المقاصد ورودًا بعد التذكّر.</p>
-    </div>
+  <p class="lede">هي نفسها أعلى درجة في السلّم: الشكر والفلاح والرحمة. يصل إليها النص عبر التقوى، والتقوى يصل إليها عبر الذكر.</p>
+  <div class="goals">
+<div class="goal"><h3>الشكر <span style="font-size:1rem;color:var(--muted);font-weight:400">١٥ آية</span></h3><div class="mini" aria-hidden="true"><div class="seg-g" style="flex:4"></div><div class="seg-m" style="flex:11"></div></div>
+  <p>أكثر الغايات ورودًا، وفي كل آياته سببٌ من الله: عطاءٌ أو تسخير أو عفو أو بيان. هو جواب العبد على العطاء.</p>
+  <p class="facts">يسبقه جسر في ٣ آيات: التذكّر ٢، التقوى ١.</p></div>
+<div class="goal"><h3>الفلاح <span style="font-size:1rem;color:var(--muted);font-weight:400">١١ آية</span></h3><div class="mini" aria-hidden="true"><div class="seg-m" style="flex:1"></div><div class="seg-h" style="flex:10"></div></div>
+  <p>أسبابه من العباد وحدهم في ١٠ من ١١ آية. هو المقصد الذي يُطلب بالعمل.</p>
+  <p class="facts">يسبقه جسر في ٨ آيات: التقوى ٥، التذكّر ٣.</p></div>
+<div class="goal"><h3>الرحمة <span style="font-size:1rem;color:var(--muted);font-weight:400">٨ آية</span></h3><div class="mini" aria-hidden="true"><div class="seg-m" style="flex:2"></div><div class="seg-h" style="flex:6"></div></div>
+  <p>لا تأتي في أي آية من سبب إلهي وحده: سببها من العباد في ٦ ومن الطرفين في ٢.</p>
+  <p class="facts">يسبقه جسر في ٤ آيات: التقوى ٤.</p></div>
+  </div>
+  <div class="changed">
+    <strong>ما الذي تغيّر عن النسخة السابقة من هذه الصفحة</strong>
+    <ul>
+      <li>صعد <b>الشكر</b> إلى الغايات العليا: يأتي بعد التقوى (آل عمران ١٢٣) وبعد الذكر، ولا يُؤمر به سببًا لغيره.</li>
+      <li>نزل <b>الرضا</b> إلى الدرجة الأولى: له آية واحدة (طه ١٣٠) لا جسر فيها.</li>
+      <li>بقيت <b>التقوى</b> محورًا، وصارت درجتها من النص: جسرٌ يأتي بعد الذكر ويقود إلى الغايات الثلاث.</li>
+      <li>أُسقطت الفئات التفسيرية (المدخلات، الإدراك، تحوّل القلب، العبادة)، وحلّ محلّها فاعل السبب كما في الآية.</li>
+    </ul>
   </div>
 </section>
 
 <section aria-labelledby="all-h">
-  <h2 id="all-h">المواضع كلها مصنّفة</h2>
-  <p class="lede">اضغط على أي مقصد لترى آياته والسبب المذكور قبل «لعلّ» في كل آية.</p>
-
-  <details>
-    <summary><span class="dot c-mind"></span><span class="t">التذكّر</span><span class="cnt">١٧ موضعًا</span></summary>
-    <ul class="vlist">
-      <li><span>البقرة ٢٢١</span><span>بيان أحكام النكاح، والله يدعو إلى الجنة والمغفرة</span></li>
-      <li><span>الأنعام ١٥٢</span><span>الوصايا: مال اليتيم والكيل والعدل والوفاء بالعهد</span></li>
-      <li><span>الأعراف ٢٦</span><span>لباس الستر ولباس التقوى</span></li>
-      <li><span>الأعراف ٥٧</span><span>إحياء الأرض بالمطر، كذلك يُخرج الله الموتى</span></li>
-      <li><span>الأعراف ١٣٠</span><span>أخذ آل فرعون بالسنين ونقص الثمرات</span></li>
-      <li><span>الأنفال ٥٧</span><span>التشريد بناقضي العهد ليعتبر من خلفهم</span></li>
-      <li><span>إبراهيم ٢٥</span><span>ضرب الأمثال (الكلمة الطيبة)</span></li>
-      <li><span>النحل ٩٠</span><span>الأمر بالعدل والإحسان والنهي عن الفحشاء والمنكر والبغي</span></li>
-      <li><span>طه ٤٤</span><span>القول الليّن لفرعون: «يتذكر أو يخشى»</span></li>
-      <li><span>النور ١</span><span>إنزال السورة وفرضها وآياتها البيّنات</span></li>
-      <li><span>النور ٢٧</span><span>الاستئذان والسلام قبل دخول البيوت</span></li>
-      <li><span>القصص ٤٣</span><span>كتاب موسى بصائر وهدى ورحمة</span></li>
-      <li><span>القصص ٤٦</span><span>إنذار قوم لم يأتهم نذير</span></li>
-      <li><span>القصص ٥١</span><span>توصيل القول لهم</span></li>
-      <li><span>الزمر ٢٧</span><span>ضرب الأمثال في القرآن من كل مثل</span></li>
-      <li><span>الدخان ٥٨</span><span>تيسير القرآن بلسان النبي ﷺ</span></li>
-      <li><span>الذاريات ٤٩</span><span>خلق كل شيء زوجين</span></li>
-    </ul>
-  </details>
-
-  <details>
-    <summary><span class="dot c-heart"></span><span class="t">الشكر</span><span class="cnt">١٥ موضعًا</span></summary>
-    <ul class="vlist">
-      <li><span>البقرة ٥٢</span><span>العفو بعد عبادة العجل</span></li>
-      <li><span>البقرة ٥٦</span><span>البعث بعد الموت</span></li>
-      <li><span>البقرة ١٨٥</span><span>اليسر في الصيام، وإكمال العدة، والتكبير</span></li>
-      <li><span>آل عمران ١٢٣</span><span>النصر في بدر، ثم الأمر بالتقوى</span></li>
-      <li><span>المائدة ٦</span><span>الطهارة ورفع الحرج وإتمام النعمة</span></li>
-      <li><span>المائدة ٨٩</span><span>بيان كفارة الأيمان</span></li>
-      <li><span>الأنفال ٢٦</span><span>الإيواء والتأييد بالنصر والرزق من الطيبات</span></li>
-      <li><span>إبراهيم ٣٧</span><span>رزق ذرية إبراهيم من الثمرات</span></li>
-      <li><span>النحل ١٤</span><span>تسخير البحر للحم الطري والحلية والفلك</span></li>
-      <li><span>النحل ٧٨</span><span>السمع والأبصار والأفئدة</span></li>
-      <li><span>الحج ٣٦</span><span>تسخير البُدن</span></li>
-      <li><span>القصص ٧٣</span><span>الليل للسكن والنهار لابتغاء الفضل</span></li>
-      <li><span>الروم ٤٦</span><span>إرسال الرياح مبشرات</span></li>
-      <li><span>فاطر ١٢</span><span>البحران والفلك المواخر</span></li>
-      <li><span>الجاثية ١٢</span><span>تسخير البحر لجري الفلك</span></li>
-    </ul>
-  </details>
-
-  <details>
-    <summary><span class="dot c-hub"></span><span class="t">التقوى</span><span class="cnt">١٢ موضعًا</span></summary>
-    <ul class="vlist">
-      <li><span>البقرة ٢١</span><span>عبادة الرب الخالق</span></li>
-      <li><span>البقرة ٦٣</span><span>أخذ الميثاق ورفع الطور: «خذوا ما آتيناكم بقوة»</span></li>
-      <li><span>البقرة ١٧٩</span><span>القصاص حياة</span></li>
-      <li><span>البقرة ١٨٣</span><span>فرض الصيام</span></li>
-      <li><span>البقرة ١٨٧</span><span>بيان حدود الله في الصيام</span></li>
-      <li><span>الأنعام ٥١</span><span>الإنذار بالقرآن</span></li>
-      <li><span>الأنعام ٦٩</span><span>الذكرى</span></li>
-      <li><span>الأنعام ١٥٣</span><span>اتباع الصراط المستقيم وترك السبل</span></li>
-      <li><span>الأعراف ١٦٤</span><span>موعظة أصحاب السبت (قول الواعظين)</span></li>
-      <li><span>الأعراف ١٧١</span><span>نتق الجبل والأخذ بقوة</span></li>
-      <li><span>طه ١١٣</span><span>تصريف الوعيد في القرآن العربي</span></li>
-      <li><span>الزمر ٢٨</span><span>قرآن عربي غير ذي عوج</span></li>
-    </ul>
-  </details>
-
-  <details>
-    <summary><span class="dot c-goal"></span><span class="t">الفلاح</span><span class="cnt">١١ موضعًا</span></summary>
-    <ul class="vlist">
-      <li><span>البقرة ١٨٩</span><span>التقوى: «ولكن البر من اتقى»</span></li>
-      <li><span>آل عمران ١٣٠</span><span>ترك الربا والتقوى</span></li>
-      <li><span>آل عمران ٢٠٠</span><span>الصبر والمصابرة والمرابطة والتقوى</span></li>
-      <li><span>المائدة ٣٥</span><span>التقوى وابتغاء الوسيلة والجهاد</span></li>
-      <li><span>المائدة ٩٠</span><span>اجتناب الخمر والميسر والأنصاب والأزلام</span></li>
-      <li><span>المائدة ١٠٠</span><span>التقوى يا أولي الألباب</span></li>
-      <li><span>الأعراف ٦٩</span><span>ذكر آلاء الله</span></li>
-      <li><span>الأنفال ٤٥</span><span>الثبات عند لقاء العدو وذكر الله كثيرًا</span></li>
-      <li><span>الحج ٧٧</span><span>الركوع والسجود والعبادة وفعل الخير</span></li>
-      <li><span>النور ٣١</span><span>التوبة جميعًا</span></li>
-      <li><span>الجمعة ١٠</span><span>ابتغاء الفضل وذكر الله كثيرًا</span></li>
-    </ul>
-  </details>
-
-  <details>
-    <summary><span class="dot c-heart"></span><span class="t">الهداية والرشد</span><span class="cnt">١٠ مواضع</span></summary>
-    <ul class="vlist">
-      <li><span>البقرة ٥٣</span><span>إيتاء موسى الكتاب والفرقان</span></li>
-      <li><span>البقرة ١٥٠</span><span>القبلة وإتمام النعمة</span></li>
-      <li><span>البقرة ١٨٦</span><span>الاستجابة لله والإيمان به («يرشدون»)</span></li>
-      <li><span>آل عمران ١٠٣</span><span>الاعتصام بحبل الله والتآلف بعد العداوة</span></li>
-      <li><span>الأعراف ١٥٨</span><span>الإيمان بالرسول النبي الأمي واتباعه</span></li>
-      <li><span>النحل ١٥</span><span>الرواسي والأنهار والسبل</span></li>
-      <li><span>الأنبياء ٣١</span><span>الرواسي والفجاج سبلًا</span></li>
-      <li><span>المؤمنون ٤٩</span><span>إيتاء موسى الكتاب</span></li>
-      <li><span>السجدة ٣</span><span>القرآن الحق لإنذار قوم لم يأتهم نذير</span></li>
-      <li><span>الزخرف ١٠</span><span>الأرض مهدًا والسبل فيها</span></li>
-    </ul>
-  </details>
-
-  <details>
-    <summary><span class="dot c-mind"></span><span class="t">التعقّل</span><span class="cnt">٨ مواضع</span></summary>
-    <ul class="vlist">
-      <li><span>البقرة ٧٣</span><span>إحياء الموتى وإراءة الآيات (قصة البقرة)</span></li>
-      <li><span>البقرة ٢٤٢</span><span>بيان أحكام المطلقات</span></li>
-      <li><span>الأنعام ١٥١</span><span>الوصايا: التوحيد وبر الوالدين وتحريم القتل والفواحش</span></li>
-      <li><span>يوسف ٢</span><span>إنزال القرآن عربيًا</span></li>
-      <li><span>النور ٦١</span><span>بيان آداب الأكل في البيوت والتحية</span></li>
-      <li><span>غافر ٦٧</span><span>أطوار الخلق من تراب إلى شيخوخة</span></li>
-      <li><span>الزخرف ٣</span><span>جعل القرآن عربيًا</span></li>
-      <li><span>الحديد ١٧</span><span>إحياء الأرض بعد موتها</span></li>
-    </ul>
-  </details>
-
-  <details>
-    <summary><span class="dot c-goal"></span><span class="t">الرحمة</span><span class="cnt">٨ مواضع</span></summary>
-    <ul class="vlist">
-      <li><span>آل عمران ١٣٢</span><span>طاعة الله والرسول</span></li>
-      <li><span>الأنعام ١٥٥</span><span>اتباع الكتاب المبارك والتقوى</span></li>
-      <li><span>الأعراف ٦٣</span><span>الإنذار ثم التقوى</span></li>
-      <li><span>الأعراف ٢٠٤</span><span>الاستماع للقرآن والإنصات</span></li>
-      <li><span>النور ٥٦</span><span>إقامة الصلاة وإيتاء الزكاة وطاعة الرسول</span></li>
-      <li><span>النمل ٤٦</span><span>الاستغفار (قول صالح عليه السلام)</span></li>
-      <li><span>يس ٤٥</span><span>اتقاء ما بين أيديهم وما خلفهم</span></li>
-      <li><span>الحجرات ١٠</span><span>الإصلاح بين الإخوة والتقوى</span></li>
-    </ul>
-  </details>
-
-  <details>
-    <summary><span class="dot c-heart"></span><span class="t">الرجوع</span><span class="cnt">٧ مواضع</span></summary>
-    <ul class="vlist">
-      <li><span>الأعراف ١٦٨</span><span>الابتلاء بالحسنات والسيئات</span></li>
-      <li><span>الأعراف ١٧٤</span><span>تفصيل الآيات</span></li>
-      <li><span>الروم ٤١</span><span>ظهور الفساد ليذيقهم بعض ما عملوا</span></li>
-      <li><span>السجدة ٢١</span><span>العذاب الأدنى دون العذاب الأكبر</span></li>
-      <li><span>الزخرف ٢٨</span><span>كلمة التوحيد باقية في عقب إبراهيم</span></li>
-      <li><span>الزخرف ٤٨</span><span>الأخذ بالعذاب مع الآيات</span></li>
-      <li><span>الأحقاف ٢٧</span><span>إهلاك القرى وتصريف الآيات</span></li>
-    </ul>
-  </details>
-
-  <details>
-    <summary><span class="dot c-mind"></span><span class="t">التفكّر</span><span class="cnt">٥ مواضع</span></summary>
-    <ul class="vlist">
-      <li><span>البقرة ٢١٩</span><span>بيان حكم الخمر والميسر وما يُنفَق</span></li>
-      <li><span>البقرة ٢٦٦</span><span>مثل الجنة التي أصابها إعصار</span></li>
-      <li><span>الأعراف ١٧٦</span><span>قصّ القصص</span></li>
-      <li><span>النحل ٤٤</span><span>تبيين الذكر للناس</span></li>
-      <li><span>الحشر ٢١</span><span>مثل إنزال القرآن على جبل</span></li>
-    </ul>
-  </details>
-
-  <details>
-    <summary><span class="dot c-heart"></span><span class="t">مقاصد أقل ورودًا</span><span class="cnt">١٠ مواضع</span></summary>
-    <ul class="vlist">
-      <li><span>الأنعام ٤٢</span><span>التضرّع: الأخذ بالبأساء والضراء</span></li>
-      <li><span>الأعراف ٩٤</span><span>التضرّع: الأخذ بالبأساء والضراء</span></li>
-      <li><span>الأنعام ١٥٤</span><span>الإيمان بلقاء ربهم: كتاب موسى تمامًا وتفصيلًا</span></li>
-      <li><span>الرعد ٢</span><span>اليقين بلقاء ربهم: رفع السماوات وتسخير الشمس والقمر وتفصيل الآيات</span></li>
-      <li><span>النحل ٨١</span><span>الإسلام: إتمام النعمة بالظلال والأكنان والسرابيل</span></li>
-      <li><span>الأنعام ٦٥</span><span>الفقه: تصريف الآيات</span></li>
-      <li><span>التوبة ١٢٢</span><span>الحذر: التفقه في الدين وإنذار القوم</span></li>
-      <li><span>التوبة ١٢</span><span>الانتهاء: قتال أئمة الكفر الناكثين</span></li>
-      <li><span>طه ١٣٠</span><span>الرضا: الصبر والتسبيح (خطاب للنبي ﷺ)</span></li>
-      <li><span>عبس ٣</span><span>التزكّي: «وما يدريك لعله يزّكّى»</span></li>
-    </ul>
-  </details>
+  <h2 id="all-h">المواضع كلها</h2>
+  <p class="lede">اضغط على أي مقصد لترى آياته. كل سبب ملوّن بفاعله: <span class="cz g">من الله</span> <span class="cz h">من العباد</span> <span class="cz h isb">أمرٌ بجسر</span>، ثم لفظ الفعل بعد «لعلّ».</p>
+<details><summary><span class="dot" style="background:var(--gold)"></span><span class="t">الشكر</span><span class="cnt">١٥ موضعًا · الدرجة ٣</span></summary><ul class="vlist"><li><span>البقرة ٥٢</span><span class="cs"><span class="cz g">عفونا عنكم</span><span class="q sm">تَشۡكُرُونَ</span></span></li><li><span>البقرة ٥٦</span><span class="cs"><span class="cz g">بعثناكم من بعد موتكم</span><span class="q sm">تَشۡكُرُونَ</span></span></li><li><span>البقرة ١٨٥</span><span class="cs"><span class="cz g">القرآن هدًى للناس</span><span class="cz g">يريد الله بكم اليسر</span><span class="cz h">لتكملوا العدة</span><span class="cz h">لتكبّروا الله على ما هداكم</span><span class="q sm">تَشۡكُرُونَ</span></span></li><li><span>آل عمران ١٢٣</span><span class="cs"><span class="cz g">نصركم الله ببدر</span><span class="cz h isb">اتقوا الله</span><span class="q sm">تَشۡكُرُونَ</span></span></li><li><span>المائدة ٦</span><span class="cs"><span class="cz h">اغسلوا وجوهكم… وامسحوا</span><span class="cz h">تيمّموا صعيدًا طيبًا</span><span class="cz g">ما يريد ليجعل عليكم من حرج</span><span class="cz g">يريد ليطهّركم</span><span class="cz g">ليتمّ نعمته عليكم</span><span class="q sm">تَشۡكُرُونَ</span></span></li><li><span>المائدة ٨٩</span><span class="cs"><span class="cz g">كفّارة الأيمان</span><span class="cz h">احفظوا أيمانكم</span><span class="cz g">يبيّن الله لكم آياته</span><span class="q sm">تَشۡكُرُونَ</span></span></li><li><span>الأنفال ٢٦</span><span class="cs"><span class="cz h isb">اذكروا إذ أنتم قليل</span><span class="cz g">آواكم</span><span class="cz g">أيّدكم بنصره</span><span class="cz g">رزقكم من الطيبات</span><span class="q sm">تَشۡكُرُونَ</span></span></li><li><span>إبراهيم ٣٧</span><span class="cs"><span class="cz g">اجعل أفئدة من الناس تهوي إليهم</span><span class="cz g">ارزقهم من الثمرات</span><span class="q sm">يَشۡكُرُونَ</span><span class="vn">من دعاء إبراهيم</span></span></li><li><span>النحل ١٤</span><span class="cs"><span class="cz g">سخّر البحر</span><span class="cz h">لتأكلوا منه لحمًا طريًا</span><span class="cz h">لتبتغوا من فضله</span><span class="q sm">تَشۡكُرُونَ</span></span></li><li><span>النحل ٧٨</span><span class="cs"><span class="cz g">أخرجكم من بطون أمهاتكم</span><span class="cz g">جعل لكم السمع والأبصار والأفئدة</span><span class="q sm">تَشۡكُرُونَ</span></span></li><li><span>الحج ٣٦</span><span class="cs"><span class="cz g">جعلنا البُدن من شعائر الله</span><span class="cz h isb">اذكروا اسم الله عليها</span><span class="cz h">كلوا منها وأطعموا</span><span class="cz g">سخّرناها لكم</span><span class="q sm">تَشۡكُرُونَ</span></span></li><li><span>القصص ٧٣</span><span class="cs"><span class="cz g">من رحمته</span><span class="cz g">جعل لكم الليل والنهار</span><span class="cz h">لتسكنوا فيه</span><span class="cz h">لتبتغوا من فضله</span><span class="q sm">تَشۡكُرُونَ</span></span></li><li><span>الروم ٤٦</span><span class="cs"><span class="cz g">يرسل الرياح مبشرات</span><span class="cz g">ليذيقكم من رحمته</span><span class="cz g">لتجري الفلك بأمره</span><span class="cz h">لتبتغوا من فضله</span><span class="q sm">تَشۡكُرُونَ</span></span></li><li><span>فاطر ١٢</span><span class="cs"><span class="cz g">البحران: عذب فرات وملح أجاج</span><span class="cz h">تأكلون لحمًا طريًا</span><span class="cz h">تستخرجون حلية</span><span class="cz h">لتبتغوا من فضله</span><span class="q sm">تَشۡكُرُونَ</span></span></li><li><span>الجاثية ١٢</span><span class="cs"><span class="cz g">سخّر لكم البحر</span><span class="cz g">لتجري الفلك فيه</span><span class="cz h">لتبتغوا من فضله</span><span class="q sm">تَشۡكُرُونَ</span></span></li></ul></details>
+<details><summary><span class="dot" style="background:var(--gold)"></span><span class="t">الفلاح</span><span class="cnt">١١ موضعًا · الدرجة ٣</span></summary><ul class="vlist"><li><span>البقرة ١٨٩</span><span class="cs"><span class="cz h">ائتوا البيوت من أبوابها</span><span class="cz h isb">اتقوا الله</span><span class="q sm">تُفۡلِحُونَ</span></span></li><li><span>آل عمران ١٣٠</span><span class="cs"><span class="cz h">لا تأكلوا الربا</span><span class="cz h isb">اتقوا الله</span><span class="q sm">تُفۡلِحُونَ</span></span></li><li><span>آل عمران ٢٠٠</span><span class="cs"><span class="cz h">اصبروا</span><span class="cz h">صابروا</span><span class="cz h">رابطوا</span><span class="cz h isb">اتقوا الله</span><span class="q sm">تُفۡلِحُونَ</span></span></li><li><span>المائدة ٣٥</span><span class="cs"><span class="cz h isb">اتقوا الله</span><span class="cz h">ابتغوا إليه الوسيلة</span><span class="cz h">جاهدوا في سبيله</span><span class="q sm">تُفۡلِحُونَ</span></span></li><li><span>المائدة ٩٠</span><span class="cs"><span class="cz h">اجتنبوا الخمر والميسر والأنصاب والأزلام</span><span class="q sm">تُفۡلِحُونَ</span></span></li><li><span>المائدة ١٠٠</span><span class="cs"><span class="cz h isb">اتقوا الله يا أولي الألباب</span><span class="q sm">تُفۡلِحُونَ</span></span></li><li><span>الأعراف ٦٩</span><span class="cs"><span class="cz g">جعلكم خلفاء</span><span class="cz g">زادكم في الخلق بسطة</span><span class="cz h isb">اذكروا آلاء الله</span><span class="q sm">تُفۡلِحُونَ</span></span></li><li><span>الأنفال ٤٥</span><span class="cs"><span class="cz h">اثبتوا</span><span class="cz h isb">اذكروا الله كثيرًا</span><span class="q sm">تُفۡلِحُونَ</span></span></li><li><span>الحج ٧٧</span><span class="cs"><span class="cz h">اركعوا واسجدوا</span><span class="cz h">اعبدوا ربكم</span><span class="cz h">افعلوا الخير</span><span class="q sm">تُفۡلِحُونَ</span></span></li><li><span>النور ٣١</span><span class="cs"><span class="cz h">يغضضن من أبصارهن ويحفظن فروجهن</span><span class="cz h">توبوا إلى الله جميعًا</span><span class="q sm">تُفۡلِحُونَ</span></span></li><li><span>الجمعة ١٠</span><span class="cs"><span class="cz h">انتشروا في الأرض</span><span class="cz h">ابتغوا من فضل الله</span><span class="cz h isb">اذكروا الله كثيرًا</span><span class="q sm">تُفۡلِحُونَ</span></span></li></ul></details>
+<details><summary><span class="dot" style="background:var(--gold)"></span><span class="t">الرحمة</span><span class="cnt">٨ مواضع · الدرجة ٣</span></summary><ul class="vlist"><li><span>آل عمران ١٣٢</span><span class="cs"><span class="cz h">أطيعوا الله والرسول</span><span class="q sm">تُرۡحَمُونَ</span></span></li><li><span>الأنعام ١٥٥</span><span class="cs"><span class="cz g">كتاب أنزلناه مبارك</span><span class="cz h">اتبعوه</span><span class="cz h isb">اتقوا</span><span class="q sm">تُرۡحَمُونَ</span></span></li><li><span>الأعراف ٦٣</span><span class="cs"><span class="cz g">جاءكم ذكر من ربكم</span><span class="cz h">لينذركم</span><span class="cz h isb">لتتقوا</span><span class="q sm">تُرۡحَمُونَ</span></span></li><li><span>الأعراف ٢٠٤</span><span class="cs"><span class="cz h">استمعوا للقرآن وأنصتوا</span><span class="q sm">تُرۡحَمُونَ</span></span></li><li><span>النور ٥٦</span><span class="cs"><span class="cz h">أقيموا الصلاة</span><span class="cz h">آتوا الزكاة</span><span class="cz h">أطيعوا الرسول</span><span class="q sm">تُرۡحَمُونَ</span></span></li><li><span>النمل ٤٦</span><span class="cs"><span class="cz h">تستغفرون الله</span><span class="q sm">تُرۡحَمُونَ</span><span class="vn">من قول صالح</span></span></li><li><span>يس ٤٥</span><span class="cs"><span class="cz h isb">اتقوا ما بين أيديكم وما خلفكم</span><span class="q sm">تُرۡحَمُونَ</span></span></li><li><span>الحجرات ١٠</span><span class="cs"><span class="cz h">أصلحوا بين أخويكم</span><span class="cz h isb">اتقوا الله</span><span class="q sm">تُرۡحَمُونَ</span></span></li></ul></details>
+<details><summary><span class="dot" style="background:var(--accent)"></span><span class="t">التقوى</span><span class="cnt">١٢ موضعًا · الدرجة ٢ · جسر</span></summary><ul class="vlist"><li><span>البقرة ٢١</span><span class="cs"><span class="cz h">اعبدوا ربكم</span><span class="cz g">الذي خلقكم والذين من قبلكم</span><span class="q sm">تَتَّقُونَ</span></span></li><li><span>البقرة ٦٣</span><span class="cs"><span class="cz g">أخذنا ميثاقكم</span><span class="cz g">رفعنا فوقكم الطور</span><span class="cz h">خذوا ما آتيناكم بقوة</span><span class="cz h isb">اذكروا ما فيه</span><span class="q sm">تَتَّقُونَ</span></span></li><li><span>البقرة ١٧٩</span><span class="cs"><span class="cz g">في القصاص حياة</span><span class="q sm">تَتَّقُونَ</span></span></li><li><span>البقرة ١٨٣</span><span class="cs"><span class="cz g">كُتب عليكم الصيام</span><span class="q sm">تَتَّقُونَ</span></span></li><li><span>البقرة ١٨٧</span><span class="cs"><span class="cz g">تلك حدود الله</span><span class="cz g">يبيّن الله آياته للناس</span><span class="q sm">يَتَّقُونَ</span></span></li><li><span>الأنعام ٥١</span><span class="cs"><span class="cz h">أنذر به الذين يخافون</span><span class="q sm">يَتَّقُونَ</span></span></li><li><span>الأنعام ٦٩</span><span class="cs"><span class="cz h isb">ذكرى</span><span class="q sm">يَتَّقُونَ</span></span></li><li><span>الأنعام ١٥٣</span><span class="cs"><span class="cz h">اتبعوا الصراط المستقيم</span><span class="cz h">لا تتبعوا السبل</span><span class="cz g">وصّاكم به</span><span class="q sm">تَتَّقُونَ</span></span></li><li><span>الأعراف ١٦٤</span><span class="cs"><span class="cz h">الموعظة معذرةً إلى ربكم</span><span class="q sm">يَتَّقُونَ</span><span class="vn">من قول الواعظين</span></span></li><li><span>الأعراف ١٧١</span><span class="cs"><span class="cz g">نتقنا الجبل فوقهم</span><span class="cz h">خذوا ما آتيناكم بقوة</span><span class="cz h isb">اذكروا ما فيه</span><span class="q sm">تَتَّقُونَ</span></span></li><li><span>طه ١١٣</span><span class="cs"><span class="cz g">أنزلناه قرآنًا عربيًا</span><span class="cz g">صرّفنا فيه من الوعيد</span><span class="q sm">يَتَّقُونَ</span><span class="vn">تتمتها: أو يُحدث لهم ذكرًا</span></span></li><li><span>الزمر ٢٨</span><span class="cs"><span class="cz g">قرآنًا عربيًا غير ذي عوج</span><span class="q sm">يَتَّقُونَ</span></span></li></ul></details>
+<details><summary><span class="dot" style="background:var(--muted)"></span><span class="t">الاهتداء</span><span class="cnt">٩ مواضع · الدرجة ٢</span></summary><ul class="vlist"><li><span>البقرة ٥٣</span><span class="cs"><span class="cz g">آتينا موسى الكتاب والفرقان</span><span class="q sm">تَهۡتَدُونَ</span></span></li><li><span>البقرة ١٥٠</span><span class="cs"><span class="cz h">ولّوا وجوهكم شطره</span><span class="cz h">اخشوني</span><span class="cz g">لأتمّ نعمتي عليكم</span><span class="q sm">تَهۡتَدُونَ</span></span></li><li><span>آل عمران ١٠٣</span><span class="cs"><span class="cz h">اعتصموا بحبل الله جميعًا</span><span class="cz h">لا تفرّقوا</span><span class="cz h isb">اذكروا نعمة الله عليكم</span><span class="cz g">ألّف بين قلوبكم</span><span class="cz g">أنقذكم من النار</span><span class="cz g">يبيّن الله لكم آياته</span><span class="q sm">تَهۡتَدُونَ</span></span></li><li><span>الأعراف ١٥٨</span><span class="cs"><span class="cz h isb">آمنوا بالله ورسوله</span><span class="cz h">اتبعوه</span><span class="q sm">تَهۡتَدُونَ</span></span></li><li><span>النحل ١٥</span><span class="cs"><span class="cz g">ألقى في الأرض رواسي</span><span class="cz g">أنهارًا وسبلًا</span><span class="q sm">تَهۡتَدُونَ</span></span></li><li><span>الأنبياء ٣١</span><span class="cs"><span class="cz g">جعلنا في الأرض رواسي</span><span class="cz g">جعلنا فيها فجاجًا سبلًا</span><span class="q sm">يَهۡتَدُونَ</span></span></li><li><span>المؤمنون ٤٩</span><span class="cs"><span class="cz g">آتينا موسى الكتاب</span><span class="q sm">يَهۡتَدُونَ</span></span></li><li><span>السجدة ٣</span><span class="cs"><span class="cz g">الحق من ربك</span><span class="cz h">لتنذر قومًا ما أتاهم من نذير</span><span class="q sm">يَهۡتَدُونَ</span></span></li><li><span>الزخرف ١٠</span><span class="cs"><span class="cz g">جعل لكم الأرض مهدًا</span><span class="cz g">جعل لكم فيها سبلًا</span><span class="q sm">تَهۡتَدُونَ</span></span></li></ul></details>
+<details><summary><span class="dot" style="background:var(--muted)"></span><span class="t">الرشد</span><span class="cnt">١ موضعًا · الدرجة ٢</span></summary><ul class="vlist"><li><span>البقرة ١٨٦</span><span class="cs"><span class="cz g">إني قريب أجيب دعوة الداع</span><span class="cz h">فليستجيبوا لي</span><span class="cz h isb">وليؤمنوا بي</span><span class="q sm">يَرۡشُدُونَ</span></span></li></ul></details>
+<details><summary><span class="dot" style="background:var(--muted)"></span><span class="t">الحذر</span><span class="cnt">١ موضعًا · الدرجة ٢</span></summary><ul class="vlist"><li><span>التوبة ١٢٢</span><span class="cs"><span class="cz h">لينفر من كل فرقة طائفة</span><span class="cz h isb">ليتفقّهوا في الدين</span><span class="cz h">لينذروا قومهم</span><span class="q sm">يَحۡذَرُونَ</span></span></li></ul></details>
+<details><summary><span class="dot" style="background:var(--accent)"></span><span class="t">التذكّر</span><span class="cnt">١٧ موضعًا · الدرجة ١ · جسر</span></summary><ul class="vlist"><li><span>البقرة ٢٢١</span><span class="cs"><span class="cz h">لا تنكحوا المشركات والمشركين</span><span class="cz g">الله يدعو إلى الجنة والمغفرة</span><span class="cz g">يبيّن آياته للناس</span><span class="q sm">يَتَذَكَّرُونَ</span></span></li><li><span>الأنعام ١٥٢</span><span class="cs"><span class="cz h">لا تقربوا مال اليتيم</span><span class="cz h">أوفوا الكيل والميزان</span><span class="cz h">اعدلوا</span><span class="cz h">أوفوا بعهد الله</span><span class="cz g">وصّاكم به</span><span class="q sm">تَذَكَّرُونَ</span></span></li><li><span>الأعراف ٢٦</span><span class="cs"><span class="cz g">أنزلنا لباسًا يواري سوءاتكم وريشًا</span><span class="cz g">لباس التقوى</span><span class="q sm">يَذَّكَّرُونَ</span></span></li><li><span>الأعراف ٥٧</span><span class="cs"><span class="cz g">يرسل الرياح بين يدي رحمته</span><span class="cz g">أنزلنا الماء فأخرجنا الثمرات</span><span class="cz g">كذلك نخرج الموتى</span><span class="q sm">تَذَكَّرُونَ</span></span></li><li><span>الأعراف ١٣٠</span><span class="cs"><span class="cz g">أخذنا آل فرعون بالسنين ونقص من الثمرات</span><span class="q sm">يَذَّكَّرُونَ</span></span></li><li><span>الأنفال ٥٧</span><span class="cs"><span class="cz h">شرّد بهم من خلفهم</span><span class="q sm">يَذَّكَّرُونَ</span></span></li><li><span>إبراهيم ٢٥</span><span class="cs"><span class="cz g">يضرب الله الأمثال للناس</span><span class="q sm">يَتَذَكَّرُونَ</span></span></li><li><span>النحل ٩٠</span><span class="cs"><span class="cz g">يأمر بالعدل والإحسان وإيتاء ذي القربى</span><span class="cz g">ينهى عن الفحشاء والمنكر والبغي</span><span class="cz g">يعظكم</span><span class="q sm">تَذَكَّرُونَ</span></span></li><li><span>طه ٤٤</span><span class="cs"><span class="cz h">قولا له قولًا ليّنًا</span><span class="q sm">يَتَذَكَّرُ</span><span class="vn">تتمتها: أو يخشى</span></span></li><li><span>النور ١</span><span class="cs"><span class="cz g">سورة أنزلناها وفرضناها</span><span class="cz g">أنزلنا فيها آيات بيّنات</span><span class="q sm">تَذَكَّرُونَ</span></span></li><li><span>النور ٢٧</span><span class="cs"><span class="cz h">لا تدخلوا بيوتًا غير بيوتكم حتى تستأنسوا</span><span class="cz h">تسلّموا على أهلها</span><span class="q sm">تَذَكَّرُونَ</span></span></li><li><span>القصص ٤٣</span><span class="cs"><span class="cz g">آتينا موسى الكتاب</span><span class="cz g">بصائر للناس</span><span class="cz g">هدًى</span><span class="cz g">رحمة</span><span class="q sm">يَتَذَكَّرُونَ</span></span></li><li><span>القصص ٤٦</span><span class="cs"><span class="cz g">رحمة من ربك</span><span class="cz h">لتنذر قومًا</span><span class="q sm">يَتَذَكَّرُونَ</span></span></li><li><span>القصص ٥١</span><span class="cs"><span class="cz g">وصّلنا لهم القول</span><span class="q sm">يَتَذَكَّرُونَ</span></span></li><li><span>الزمر ٢٧</span><span class="cs"><span class="cz g">ضربنا للناس في هذا القرآن من كل مثل</span><span class="q sm">يَتَذَكَّرُونَ</span></span></li><li><span>الدخان ٥٨</span><span class="cs"><span class="cz g">يسّرناه بلسانك</span><span class="q sm">يَتَذَكَّرُونَ</span></span></li><li><span>الذاريات ٤٩</span><span class="cs"><span class="cz g">من كل شيء خلقنا زوجين</span><span class="q sm">تَذَكَّرُونَ</span></span></li></ul></details>
+<details><summary><span class="dot" style="background:var(--muted)"></span><span class="t">التعقّل</span><span class="cnt">٨ مواضع · الدرجة ١</span></summary><ul class="vlist"><li><span>البقرة ٧٣</span><span class="cs"><span class="cz h">اضربوه ببعضها</span><span class="cz g">يحيي الله الموتى</span><span class="cz g">يريكم آياته</span><span class="q sm">تَعۡقِلُونَ</span></span></li><li><span>البقرة ٢٤٢</span><span class="cs"><span class="cz g">يبيّن الله لكم آياته (أحكام المطلقات)</span><span class="q sm">تَعۡقِلُونَ</span></span></li><li><span>الأنعام ١٥١</span><span class="cs"><span class="cz g">ما حرّم ربكم… وصّاكم به</span><span class="cz h">ألا تشركوا به شيئًا</span><span class="cz h">بالوالدين إحسانًا</span><span class="cz h">لا تقتلوا أولادكم</span><span class="cz h">لا تقربوا الفواحش</span><span class="cz h">لا تقتلوا النفس</span><span class="q sm">تَعۡقِلُونَ</span></span></li><li><span>يوسف ٢</span><span class="cs"><span class="cz g">أنزلناه قرآنًا عربيًا</span><span class="q sm">تَعۡقِلُونَ</span></span></li><li><span>النور ٦١</span><span class="cs"><span class="cz g">رفع الحرج في الأكل من البيوت</span><span class="cz h">سلّموا على أنفسكم</span><span class="cz g">يبيّن الله لكم الآيات</span><span class="q sm">تَعۡقِلُونَ</span></span></li><li><span>غافر ٦٧</span><span class="cs"><span class="cz g">خلقكم من تراب ثم من نطفة ثم من علقة</span><span class="cz g">لتبلغوا أشدكم ثم لتكونوا شيوخًا</span><span class="cz g">لتبلغوا أجلًا مسمى</span><span class="q sm">تَعۡقِلُونَ</span></span></li><li><span>الزخرف ٣</span><span class="cs"><span class="cz g">جعلناه قرآنًا عربيًا</span><span class="q sm">تَعۡقِلُونَ</span></span></li><li><span>الحديد ١٧</span><span class="cs"><span class="cz g">يحيي الأرض بعد موتها</span><span class="cz g">بيّنّا لكم الآيات</span><span class="q sm">تَعۡقِلُونَ</span></span></li></ul></details>
+<details><summary><span class="dot" style="background:var(--muted)"></span><span class="t">الرجوع</span><span class="cnt">٧ مواضع · الدرجة ١</span></summary><ul class="vlist"><li><span>الأعراف ١٦٨</span><span class="cs"><span class="cz g">قطّعناهم في الأرض أممًا</span><span class="cz g">بلوناهم بالحسنات والسيئات</span><span class="q sm">يَرۡجِعُونَ</span></span></li><li><span>الأعراف ١٧٤</span><span class="cs"><span class="cz g">نفصّل الآيات</span><span class="q sm">يَرۡجِعُونَ</span></span></li><li><span>الروم ٤١</span><span class="cs"><span class="cz h">ظهر الفساد بما كسبت أيدي الناس</span><span class="cz g">ليذيقهم بعض الذي عملوا</span><span class="q sm">يَرۡجِعُونَ</span></span></li><li><span>السجدة ٢١</span><span class="cs"><span class="cz g">لنذيقنّهم من العذاب الأدنى</span><span class="q sm">يَرۡجِعُونَ</span></span></li><li><span>الزخرف ٢٨</span><span class="cs"><span class="cz h">جعلها كلمة باقية في عقبه</span><span class="q sm">يَرۡجِعُونَ</span><span class="vn">الفاعل إبراهيم في أكثر التفاسير</span></span></li><li><span>الزخرف ٤٨</span><span class="cs"><span class="cz g">ما نريهم من آية إلا هي أكبر من أختها</span><span class="cz g">أخذناهم بالعذاب</span><span class="q sm">يَرۡجِعُونَ</span></span></li><li><span>الأحقاف ٢٧</span><span class="cs"><span class="cz g">أهلكنا ما حولكم من القرى</span><span class="cz g">صرّفنا الآيات</span><span class="q sm">يَرۡجِعُونَ</span></span></li></ul></details>
+<details><summary><span class="dot" style="background:var(--muted)"></span><span class="t">التفكّر</span><span class="cnt">٥ مواضع · الدرجة ١</span></summary><ul class="vlist"><li><span>البقرة ٢١٩</span><span class="cs"><span class="cz g">في الخمر والميسر إثم كبير ومنافع</span><span class="cz g">قل العفو (في الإنفاق)</span><span class="cz g">يبيّن الله لكم الآيات</span><span class="q sm">تَتَفَكَّرُونَ</span></span></li><li><span>البقرة ٢٦٦</span><span class="cs"><span class="cz g">مثل جنة أصابها إعصار فاحترقت</span><span class="cz g">يبيّن الله لكم الآيات</span><span class="q sm">تَتَفَكَّرُونَ</span></span></li><li><span>الأعراف ١٧٦</span><span class="cs"><span class="cz g">مثل الذي انسلخ من الآيات</span><span class="cz h">اقصص القصص</span><span class="q sm">يَتَفَكَّرُونَ</span></span></li><li><span>النحل ٤٤</span><span class="cs"><span class="cz g">أنزلنا إليك الذكر</span><span class="cz h">لتبيّن للناس ما نُزّل إليهم</span><span class="q sm">يَتَفَكَّرُونَ</span></span></li><li><span>الحشر ٢١</span><span class="cs"><span class="cz g">لو أنزلنا هذا القرآن على جبل</span><span class="cz g">تلك الأمثال نضربها للناس</span><span class="q sm">يَتَفَكَّرُونَ</span></span></li></ul></details>
+<details><summary><span class="dot" style="background:var(--muted)"></span><span class="t">التضرّع</span><span class="cnt">٢ موضعًا · الدرجة ١</span></summary><ul class="vlist"><li><span>الأنعام ٤٢</span><span class="cs"><span class="cz g">أرسلنا إلى أمم من قبلك</span><span class="cz g">أخذناهم بالبأساء والضراء</span><span class="q sm">يَتَضَرَّعُونَ</span></span></li><li><span>الأعراف ٩٤</span><span class="cs"><span class="cz g">ما أرسلنا في قرية من نبي</span><span class="cz g">أخذنا أهلها بالبأساء والضراء</span><span class="q sm">يَضَّرَّعُونَ</span></span></li></ul></details>
+<details><summary><span class="dot" style="background:var(--accent)"></span><span class="t">الإيمان</span><span class="cnt">١ موضعًا · الدرجة ١ · جسر</span></summary><ul class="vlist"><li><span>الأنعام ١٥٤</span><span class="cs"><span class="cz g">آتينا موسى الكتاب تمامًا وتفصيلًا لكل شيء</span><span class="cz g">هدًى</span><span class="cz g">رحمة</span><span class="q sm">يُؤۡمِنُونَ</span><span class="vn">تتمتها: بلقاء ربهم</span></span></li></ul></details>
+<details><summary><span class="dot" style="background:var(--muted)"></span><span class="t">اليقين</span><span class="cnt">١ موضعًا · الدرجة ١</span></summary><ul class="vlist"><li><span>الرعد ٢</span><span class="cs"><span class="cz g">رفع السماوات بغير عمد</span><span class="cz g">سخّر الشمس والقمر</span><span class="cz g">يدبّر الأمر</span><span class="cz g">يفصّل الآيات</span><span class="q sm">تُوقِنُونَ</span><span class="vn">تتمتها: بلقاء ربكم</span></span></li></ul></details>
+<details><summary><span class="dot" style="background:var(--muted)"></span><span class="t">الإسلام</span><span class="cnt">١ موضعًا · الدرجة ١</span></summary><ul class="vlist"><li><span>النحل ٨١</span><span class="cs"><span class="cz g">جعل لكم ظلالًا وأكنانًا</span><span class="cz g">سرابيل تقيكم الحر وبأسكم</span><span class="cz g">يتمّ نعمته عليكم</span><span class="q sm">تُسۡلِمُونَ</span></span></li></ul></details>
+<details><summary><span class="dot" style="background:var(--accent)"></span><span class="t">الفقه</span><span class="cnt">١ موضعًا · الدرجة ١ · جسر</span></summary><ul class="vlist"><li><span>الأنعام ٦٥</span><span class="cs"><span class="cz g">القادر على أن يبعث عليكم عذابًا</span><span class="cz g">نصرّف الآيات</span><span class="q sm">يَفۡقَهُونَ</span></span></li></ul></details>
+<details><summary><span class="dot" style="background:var(--muted)"></span><span class="t">الانتهاء</span><span class="cnt">١ موضعًا · الدرجة ١</span></summary><ul class="vlist"><li><span>التوبة ١٢</span><span class="cs"><span class="cz h">قاتلوا أئمة الكفر</span><span class="q sm">يَنتَهُونَ</span></span></li></ul></details>
+<details><summary><span class="dot" style="background:var(--muted)"></span><span class="t">الرضا</span><span class="cnt">١ موضعًا · الدرجة ١</span></summary><ul class="vlist"><li><span>طه ١٣٠</span><span class="cs"><span class="cz h">اصبر على ما يقولون</span><span class="cz h">سبّح بحمد ربك</span><span class="q sm">تَرۡضَىٰ</span><span class="vn">خطاب للنبي ﷺ</span></span></li></ul></details>
+<details><summary><span class="dot" style="background:var(--muted)"></span><span class="t">التزكّي</span><span class="cnt">١ موضعًا · الدرجة ١</span></summary><ul class="vlist"><li><span>عبس ٣</span><span class="cs"><span class="q sm">يَزَّكَّىٰ</span><span class="vn">لا يُذكر سبب في الآية نفسها</span></span></li></ul></details>
 
   <details>
     <summary><span class="dot" style="background:var(--input)"></span><span class="t">مواضع لا تحمل مقصدًا إلهيًا</span><span class="cnt">٢٦ موضعًا</span></summary>
@@ -478,8 +363,10 @@ footer { color: var(--muted); font-size: .85rem; border-top: 1px solid var(--lin
   <h2 id="note-h">ملاحظات منهجية</h2>
   <div class="note">
     <p><strong>معنى «لعلّ»:</strong> في «التبيان في تفسير غريب القرآن» أنها حرف توقّع، يكون للترجّي في المحبوب وللإشفاق في المكروه، ولا يُستعمل إلا في الممكن. وإذا جاءت في كلام الله فهي عند المفسرين للتعليل بمعنى «كي»، والترجّي فيها راجع إلى المخاطَبين لا إلى الله تعالى.</p>
-    <p><strong>الأعداد:</strong> مأخوذة مباشرة من المواضع الـ١٢٩ في قرآنبيديا.</p>
-    <p><strong>ترتيب الدرجات:</strong> اجتهاد في قراءة صلة الآيات بعضها ببعض، مبنيّ على الآيات التي تذكر أكثر من حلقة في موضع واحد، وليس تصنيفًا منقولًا عن مصدر.</p>
+    <p><strong>الأسباب:</strong> تُؤخذ بلفظها من الآية نفسها، ويُحدَّد فاعلها: الله (فعلٌ أو عطاء أو بيان) أو العباد (أمرٌ أو عمل). لا تُجمع تحت أبواب مثل «العبادة».</p>
+    <p><strong>الجسر:</strong> يُعدّ السبب جسرًا إذا كان أمرًا للعباد يشارك مقصدًا من مقاصد «لعلّ» في جذره ومعناه، مثل «اتقوا» و«تتقون»، و«اذكروا» و«تذكّرون». هذه مطابقة لفظية، وفي «الذكر» تحديدًا قد يختلف المعنى بين ذكر اللسان والتذكّر.</p>
+    <p><strong>الدرجة:</strong> عدد الحلقات في أطول سلسلة تنتهي بالمقصد، والحلقات مأخوذة من آيات مختلفة.</p>
+    <p><strong>للتوسع:</strong> <a href="https://subhiqudsi.github.io/68f9bf11d0/498ef9695aa7.html" target="_blank" rel="noopener">الخريطة التفاعلية</a>، فيها كل علاقة قابلة للضغط، و<a href="https://subhiqudsi.github.io/68f9bf11d0/b0b82f9b4de1.html" target="_blank" rel="noopener">القراءة الحرفية</a> بتفاصيلها.</p>
   </div>
 </section>
 
